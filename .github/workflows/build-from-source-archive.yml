@@ -22,10 +22,6 @@ jobs:
       - name: Extract UU遊戲 source
         run: unzip -q UU-Game-source.zip -d source
 
-      - name: Resolve Swift packages
-        working-directory: source
-        run: xcodebuild -resolvePackageDependencies -project Feather.xcodeproj -scheme Feather
-
       - name: Archive unsigned app
         working-directory: source
         run: |
@@ -36,6 +32,8 @@ jobs:
             -sdk iphoneos \
             -destination 'generic/platform=iOS' \
             -archivePath "$RUNNER_TEMP/UUGame.xcarchive" \
+            -derivedDataPath "$RUNNER_TEMP/UUGameDerivedData" \
+            -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""

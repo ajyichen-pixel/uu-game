@@ -19,9 +19,6 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Resolve Swift packages
-        run: xcodebuild -resolvePackageDependencies -project Feather.xcodeproj -scheme Feather
-
       - name: Archive without a distribution certificate
         run: |
           xcodebuild archive \
@@ -31,6 +28,8 @@ jobs:
             -sdk iphoneos \
             -destination 'generic/platform=iOS' \
             -archivePath "$RUNNER_TEMP/UUGame.xcarchive" \
+            -derivedDataPath "$RUNNER_TEMP/UUGameDerivedData" \
+            -skipPackagePluginValidation \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY=""
