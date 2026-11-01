@@ -1,8 +1,17 @@
 .DS_Store
 packages
+dist/
 Payload
 *UserInterfaceState.xcuserstate
 xcuserdata/
 deps
 cert.json
 _build
+
+# Never put a built IPA or a personal Apple signing material in this public repo.
+*.ipa
+*.p12
+*.mobileprovision
+*.cer
+*.key
+*.pem
