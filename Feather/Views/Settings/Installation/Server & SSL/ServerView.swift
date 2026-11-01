@@ -5,6 +5,7 @@
 //  Created by samara on 6.05.2025.
 //
 
+#if false // UU遊戲 does not download shared server TLS certificates.
 import SwiftUI
 import NimbleJSON
 import NimbleViews
@@ -92,3 +93,4 @@ struct ServerView: View {
 		}
 	}
 }
+#endif

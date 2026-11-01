@@ -7,6 +7,7 @@
 //  ORIGINALLY LICENSED UNDER GPL-3.0, MODIFIED FOR USE FOR FEATHER
 //
 
+#if false // See ServerInstaller.swift.
 import Foundation
 import NIOSSL
 import NIOTLS
@@ -133,3 +134,4 @@ extension ServerInstaller {
 		return address
 	}
 }
+#endif

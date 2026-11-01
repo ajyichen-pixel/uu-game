@@ -10,48 +10,17 @@ import NimbleViews
 
 // MARK: - View
 struct InstallationView: View {
-	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
-	@State private var _showMethodChangedAlert = false
-
-	private let _installationMethods: [String] = [
-		.localized("Server"),
-		.localized("idevice")
-	]
-	
-	// MARK: Body
 	var body: some View {
 		NBList(.localized("Installation")) {
 			Section {
-				Picker(.localized("Installation Type"), systemImage: "arrow.down.app", selection: $_installationMethod) {
-					ForEach(_installationMethods.indices, id: \.description) { index in
-						Text(_installationMethods[index]).tag(index)
-					}
-				}
-			} footer: {
-				Text(.localized("Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."))
-			}
-			
-			if _installationMethod == 0 {
-				ServerView()
-			} else if _installationMethod == 1 {
+				Text("UU遊戲不使用外部伺服器或共用憑證。請使用 IDevice 配對方式，或在簽名後分享 IPA 到 AltStore 安裝。")
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
 				TunnelView()
+			} footer: {
+				Text("IDevice 會使用你自己的配對檔與裝置連線；它不會上傳你的簽章憑證。")
 			}
 		}
-		.onChange(of: _installationMethod) { newValue in
-			guard newValue == 1 else { return }
-			_showMethodChangedAlert = true
-		}
-		.alert(.localized("Advanced Installation Method"), isPresented: $_showMethodChangedAlert) {
-			Button(.localized("Switch Back"), role: .destructive) {
-				_installationMethod = 0
-			}
-			Button(.localized("OK"), role: .cancel) {}
-		} message: {
-			Text(.localized("idevice warning"))
-		}
-
-
-		.animation(.default, value: _installationMethod)
 	}
 }
 

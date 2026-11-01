@@ -30,8 +30,6 @@ $(PLATFORMS): deps
 		-configuration Release \
 		-destination "$$DEST" \
 		-derivedDataPath $(TMP)/$@ \
-		-disableAutomaticPackageResolution \
-		-onlyUsePackageVersionsFromResolvedFile \
 		-skipPackagePluginValidation \
 		CODE_SIGNING_ALLOWED=NO \
 		ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO

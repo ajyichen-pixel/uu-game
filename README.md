@@ -4,13 +4,14 @@ UU遊戲是一個紫電風格的 iPhone／iPad 本機 IPA 簽名與安裝 App。
 
 ## GitHub 公開來源
 
-為了讓沒有 Git 憑證設定的 Windows 電腦也能發布完整專案，這個公開 repository 的完整、可建置來源放在根目錄的 `UU-Game-source.zip`。它包含所有必要的子模組原始碼，但排除了與 macOS 建置無關的 Windows 預編譯檔。下載後解壓縮即可取得 Xcode 專案；GitHub Actions 的 `Build UU遊戲 IPA` 工作流程會自動解壓縮並產生未簽名 IPA。
+為了讓沒有 Git 憑證設定的 Windows 電腦也能取得完整專案，這個公開 repository 的根目錄另附 `UU-Game-source.zip`。它包含所有必要的子模組原始碼，但排除了與 macOS 建置無關的 Windows 預編譯檔。GitHub Actions 則直接從 repository 的來源與子模組產生未簽名 IPA。
 
 ## 設計原則
 
 - 只簽署你有權使用的 IPA。
 - 不提供、下載或內建共用／企業簽名憑證。
 - 不經由 URL 匯入或匯出 `.p12` 私鑰；憑證與描述檔必須從裝置的「檔案」App 手動選取。
+- 不啟用需要 TLS 憑證的本機 Web 伺服器安裝功能；避免使用外部或共用憑證。
 - 首次安裝的未簽名 IPA 可由 AltStore 或其他合法側載方式簽署至你的裝置。
 
 ## 不需要 Mac 的建置方式
@@ -26,7 +27,7 @@ UU遊戲是一個紫電風格的 iPhone／iPad 本機 IPA 簽名與安裝 App。
 
 ## 裝置端使用
 
-UU遊戲本身安裝後，使用者可在「憑證」頁面從「檔案」App 匯入自己持有的 `.p12` 和 `.mobileprovision`，再匯入有權使用的 IPA 進行本機簽名。Apple 的簽名憑證與描述檔決定哪些裝置與 App ID 可以安裝；本專案不會繞過這些規則。
+UU遊戲本身安裝後，使用者可在「憑證」頁面從「檔案」App 匯入自己持有的 `.p12` 和 `.mobileprovision`，再匯入有權使用的 IPA 進行本機簽名。簽名後可分享 IPA 至 AltStore，或使用自己建立的 IDevice 配對方式安裝。Apple 的簽名憑證與描述檔決定哪些裝置與 App ID 可以安裝；本專案不會繞過這些規則。
 
 ## 授權與致謝
 

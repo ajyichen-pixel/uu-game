@@ -7,6 +7,7 @@
 //  ORIGINALLY LICENSED UNDER GPL-3.0, MODIFIED FOR USE FOR FEATHER
 //
 
+#if false // See ServerInstaller.swift.
 import Foundation
 import UIKit.UIGraphicsImageRenderer
 
@@ -134,3 +135,4 @@ extension ServerInstaller {
 		)) ?? .init()
 	}
 }
+#endif

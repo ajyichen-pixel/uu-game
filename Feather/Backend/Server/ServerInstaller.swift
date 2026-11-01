@@ -7,6 +7,7 @@
 //  ORIGINALLY LICENSED UNDER GPL-3.0, MODIFIED FOR USE FOR FEATHER
 //
 
+#if false // UU遊戲 only supports IDevice/AltStore installation; no shared server certificates.
 import Foundation
 import Vapor
 import NIOSSL
@@ -109,3 +110,4 @@ class ServerInstaller: Identifiable, ObservableObject {
 		UserDefaults.standard.bool(forKey: "Feather.ipFix")
 	}
 }
+#endif
