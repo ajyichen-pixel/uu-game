@@ -1,0 +1,52 @@
+name: Build UU遊戲 IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "UU-Game-source.zip"
+      - ".github/workflows/build-from-source-archive.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    steps:
+      - name: Check out public source archive
+        uses: actions/checkout@v4
+
+      - name: Extract UU遊戲 source
+        run: unzip -q UU-Game-source.zip -d source
+
+      - name: Resolve Swift packages
+        working-directory: source
+        run: xcodebuild -resolvePackageDependencies -project Feather.xcodeproj -scheme Feather
+
+      - name: Archive unsigned app
+        working-directory: source
+        run: |
+          xcodebuild archive \
+            -project Feather.xcodeproj \
+            -scheme Feather \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/UUGame.xcarchive" \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY=""
+
+      - name: Package unsigned IPA
+        working-directory: source
+        run: bash ./scripts/package-ipa.sh "$RUNNER_TEMP/UUGame.xcarchive" "$GITHUB_WORKSPACE/dist/UU-Game-unsigned.ipa"
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: UU-Game-unsigned-IPA
+          path: dist/UU-Game-unsigned.ipa
+          if-no-files-found: error

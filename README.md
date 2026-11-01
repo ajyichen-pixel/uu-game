@@ -2,6 +2,10 @@
 
 UU遊戲是一個紫電風格的 iPhone／iPad 本機 IPA 簽名與安裝 App。它以 [Feather](https://github.com/claration/Feather) 為基礎，使用內含的 zsign 簽名引擎。
 
+## GitHub 公開來源
+
+為了讓沒有 Git 憑證設定的 Windows 電腦也能發布完整專案，這個公開 repository 的完整、可建置來源放在根目錄的 `UU-Game-source.zip`。它包含所有必要的子模組原始碼，但排除了與 macOS 建置無關的 Windows 預編譯檔。下載後解壓縮即可取得 Xcode 專案；GitHub Actions 的 `Build UU遊戲 IPA` 工作流程會自動解壓縮並產生未簽名 IPA。
+
 ## 設計原則
 
 - 只簽署你有權使用的 IPA。
