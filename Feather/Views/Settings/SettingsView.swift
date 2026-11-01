@@ -13,7 +13,7 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
-	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
+	@AppStorage("UUGame.selectedCert") private var _storedSelectedCert: Int = 0
 	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
 	
 	// MARK: Fetch
@@ -34,18 +34,11 @@ struct SettingsView: View {
 	}
 
     
-	private let _donationsUrl = "https://github.com/sponsors/claration"
-	private let _githubUrl = "https://github.com/claration/Feather"
-    
 	// MARK: Body
 	var body: some View {
 		NBNavigationView(.localized("Settings")) {
 			Form {
-				#if !NIGHTLY && !DEBUG
-					SettingsDonationCellView(site: _donationsUrl)
-				#endif
-                
-				_feedback()
+				_about()
                 
 				Section {
 					NavigationLink(destination: AppearanceView()) {
@@ -104,7 +97,7 @@ struct SettingsView: View {
 // MARK: - View extension
 extension SettingsView {
 	@ViewBuilder
-	private func _feedback() -> some View {
+	private func _about() -> some View {
 		Section {
 			NavigationLink(destination: AboutView()) {
 				Label {
@@ -113,15 +106,6 @@ extension SettingsView {
 					FRAppIconView(size: 23)
 				}
 			}
-            
-			Button(.localized("Submit Feedback"), systemImage: "safari") {
-				UIApplication.open(URL(string: "\(_githubUrl)/issues/new/choose")!)
-			}
-			Button(.localized("GitHub Repository"), systemImage: "safari") {
-				UIApplication.open(_githubUrl)
-			}
-		} footer: {
-			Text(.localized("If any issues occur within the app please report it via the GitHub repository. When submitting an issue, make sure to submit detailed information."))
 		}
 	}
     

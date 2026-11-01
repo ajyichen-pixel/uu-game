@@ -19,7 +19,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.ipa</string>
+				<string>game.uu.signer.ipa</string>
 			</array>
 		</dict>
 		<dict>
@@ -33,7 +33,7 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>thewonderofyou.Feather.tipa</string>
+				<string>game.uu.signer.tipa</string>
 			</array>
 		</dict>
 	</array>
@@ -114,10 +114,10 @@
 			<key>CFBundleURLIconFile</key>
 			<string>feather_extension</string>
 			<key>CFBundleURLName</key>
-			<string>thewonderofyou.Feather</string>
+			<string>game.uu.signer</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>feather</string>
+				<string>uugame</string>
 			</array>
 		</dict>
 	</array>
@@ -152,7 +152,7 @@
 				<string>IPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.ipa</string>
+			<string>game.uu.signer.ipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -184,7 +184,7 @@
 				<string>TIPA</string>
 			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>thewonderofyou.Feather.tipa</string>
+			<string>game.uu.signer.tipa</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -198,18 +198,5 @@
 			</dict>
 		</dict>
 	</array>
-<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>claration.dev</key>
-        <dict>
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-        </dict>
-    </dict>
-</dict>
 </dict>
 </plist>

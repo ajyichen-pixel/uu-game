@@ -39,7 +39,7 @@ struct SigningView: View {
 	
 	init(app: AppInfoPresentable) {
 		self.app = app
-		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
+		let storedCert = UserDefaults.standard.integer(forKey: "UUGame.selectedCert")
 		__temporaryCertificate = State(initialValue: storedCert)
 	}
 		

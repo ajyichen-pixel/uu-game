@@ -12,24 +12,24 @@ import UIKit
 // MARK: - View
 // dear god help me
 struct AppearanceView: View {
-	@AppStorage("Feather.userInterfaceStyle")
+	@AppStorage("UUGame.userInterfaceStyle")
 	private var _userIntefacerStyle: Int = UIUserInterfaceStyle.unspecified.rawValue
 	
-	@AppStorage("Feather.shouldTintIcons")
+	@AppStorage("UUGame.shouldTintIcons")
 	private var _shouldTintIcons: Bool = false
 	
-	@AppStorage("Feather.shouldChangeIconsBasedOffStyle")
+	@AppStorage("UUGame.shouldChangeIconsBasedOffStyle")
 	private var _shouldChangeIconsBasedOffStyle: Bool = false
 	
-	@AppStorage("Feather.storeCellAppearance")
+	@AppStorage("UUGame.storeCellAppearance")
 	private var _storeCellAppearance: Int = 0
 	private let _storeCellAppearanceMethods: [(name: String, desc: String)] = [
 		(.localized("Standard"), .localized("Default style for the app, only includes subtitle.")),
 		(.localized("Big Description"), .localized("Adds the localized description of the app."))
 	]
 	
-	@AppStorage("Feather.userTintColor")
-	private var _selectedColorHex: String = "#848ef9"
+	@AppStorage("UUGame.userTintColor")
+	private var _selectedColorHex: String = "#9D4EDD"
 	
 	private var _tintColorBinding: Binding<Color> {
 		Binding(

@@ -5,9 +5,11 @@
 //  Created by samsam on 2/5/26.
 //
 
-FEATHER_PROJECT_VERSION=2.9.0
-FEATHER_PRODUCT_BUNDLE_IDENTIFIER=thewonderofyou.Feather
-FEATHER_DISAMBIGUATOR=${DEVELOPMENT_TEAM}
+// UU遊戲 is a local-only derivative of Feather. Override this identifier
+// before any public distribution to a value you control.
+FEATHER_PROJECT_VERSION=0.1.0
+FEATHER_PRODUCT_BUNDLE_IDENTIFIER=game.uu.signer
+FEATHER_DISAMBIGUATOR=
 
 AD_HOC_CODE_SIGNING_ALLOWED = YES
 

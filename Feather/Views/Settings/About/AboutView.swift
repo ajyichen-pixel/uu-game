@@ -26,8 +26,6 @@ struct AboutView: View {
 		.init(name: "Lakhan Lothiyi", desc: "AltStore Repositories", github: "llsc12"),
 	]
 	
-	let pngURL = URL(string: "https://sponsors.claration.dev/sponsors.png")!
-	
 	// MARK: Body
 	var body: some View {
 		NBList(.localized("About")) {
@@ -58,34 +56,9 @@ struct AboutView: View {
 				.transition(.slide)
 			}
 			
-			NBSection(.localized("Sponsors")) {
-				Text(.localized("💜 This couldn't of been done without my sponsors!"))
+			NBSection("UU遊戲") {
+				Text("紫電本機簽名模式：憑證、描述檔與 IPA 均不會由 UU遊戲上傳。請只匯入你有權使用的簽名資料與 App。")
 					.foregroundStyle(.secondary)
-					.padding(.vertical, 2)
-				AsyncImage(url: pngURL) { phase in
-					switch phase {
-					case .empty:
-						ProgressView()
-							.frame(maxWidth: .infinity)
-							.frame(height: 120)
-					case .success(let image):
-						image
-							.resizable()
-							.scaledToFit()
-							.frame(maxWidth: .infinity)
-							.listRowInsets(EdgeInsets())
-					case .failure:
-						Image(systemName: "photo")
-							.resizable()
-							.scaledToFit()
-							.frame(maxWidth: .infinity)
-							.foregroundColor(.gray)
-							.frame(height: 120)
-						
-					@unknown default:
-						EmptyView()
-					}
-				}
 			}
 		}
 	}
