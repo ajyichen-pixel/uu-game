@@ -11,7 +11,10 @@ permissions:
 jobs:
   build:
     name: Build unsigned iOS IPA
-    runs-on: macos-latest
+    # Xcode 26.3 has a reproducible SwiftPM model-graph crash for this
+    # dependency set.  Use the same stable macOS/Xcode pair used by the
+    # upstream project before its Xcode 26 migration.
+    runs-on: macos-15
 
     steps:
       - name: Check out source and signing engine
@@ -20,7 +23,7 @@ jobs:
           submodules: recursive
 
       - name: Select upstream-compatible Xcode
-        run: sudo xcode-select -s /Applications/Xcode_26.3.0.app
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app
 
       - name: Build and package without a distribution certificate
         run: |
